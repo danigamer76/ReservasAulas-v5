@@ -1,9 +1,10 @@
 package org.iesalandalus.programacion.reservasaulas.mvc.modelo.dominio;
 
-import java.time.LocalDate;
+import java.io.Serializable;
 import java.util.Objects;
 
-public class Reserva {
+@SuppressWarnings("serial")
+public class Reserva implements Serializable{
 	private Profesor profesor;
 	private Aula aula;
 	private Permanencia permanencia;

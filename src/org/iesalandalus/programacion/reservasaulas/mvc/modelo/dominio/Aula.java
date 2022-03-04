@@ -1,8 +1,10 @@
 package org.iesalandalus.programacion.reservasaulas.mvc.modelo.dominio;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public class Aula {
+@SuppressWarnings("serial")
+public class Aula implements Serializable{
 	private static final float PUNTOS_POR_PUESTO = 0.5f;
 	private static final int MIN_PUESTOS = 10;
 	private static final int MAX_PUESTOS = 100;

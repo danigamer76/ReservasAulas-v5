@@ -19,4 +19,8 @@ public interface IAulas {
 	void borrar(Aula aula) throws OperationNotSupportedException;
 	
 	List<String> representar();
+	
+	void leer();
+	
+	void escribir();
 }

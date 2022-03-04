@@ -30,5 +30,9 @@ public interface IReservas {
 	List<Reserva> getReservasPermanencia(Permanencia permanencia);
 	
 	boolean consultarDisponibilidad(Aula aula, Permanencia permanencia);
+	
+	void leer();
+	
+	void escribir();
 
 }

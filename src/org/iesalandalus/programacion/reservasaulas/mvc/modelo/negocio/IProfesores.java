@@ -19,5 +19,9 @@ public interface IProfesores {
 	void borrar(Profesor profesor) throws OperationNotSupportedException;
 	
 	List<String> representar();
+	
+	void leer();
+	
+	void escribir();
 
 }

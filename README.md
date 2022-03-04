@@ -1,7 +1,7 @@
 # ReservasAulas-v3
 # Tarea Reservas de Aulas
 ## Profesor: AndrÃ©s Rubio del RÃ­o
-## Alumno:
+## Alumno: Daniel Guardia Fernandez
 
 Desde el IES Al-Ãndalus nos acaban de comentar que por favor aÃ±adamos persistencia a los datos introducidos, ya que tal y como estÃ¡ ahora la aplicaciÃ³n no es funcional. Por tanto, en este cuarto spring aÃ±adiremos persistencia a los datos utilizando para ello ficheros de objetos, para lo que sustituiremos el modelo que tenÃ­amos de memoria, por un modelo de ficheros.
 

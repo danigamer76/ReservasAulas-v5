@@ -8,6 +8,10 @@ import org.iesalandalus.programacion.reservasaulas.mvc.modelo.dominio.Profesor;
 
 public interface IProfesores {
 	
+	void comenzar();
+	
+	void terminar();
+	
 	List<Profesor> getProfesores();
 	
 	int getNumProfesores();
@@ -19,9 +23,5 @@ public interface IProfesores {
 	void borrar(Profesor profesor) throws OperationNotSupportedException;
 	
 	List<String> representar();
-	
-	void leer();
-	
-	void escribir();
 
 }

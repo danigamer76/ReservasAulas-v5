@@ -11,6 +11,10 @@ import org.iesalandalus.programacion.reservasaulas.mvc.modelo.dominio.Reserva;
 
 public interface IReservas {
 	
+	void comenzar();
+	
+	void terminar();
+	
 	List<Reserva> getReservas();
 	
 	int getNumReservas();
@@ -30,9 +34,4 @@ public interface IReservas {
 	List<Reserva> getReservasPermanencia(Permanencia permanencia);
 	
 	boolean consultarDisponibilidad(Aula aula, Permanencia permanencia);
-	
-	void leer();
-	
-	void escribir();
-
 }

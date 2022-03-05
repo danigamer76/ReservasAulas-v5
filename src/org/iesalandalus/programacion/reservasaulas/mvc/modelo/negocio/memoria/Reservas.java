@@ -34,6 +34,48 @@ public class Reservas implements IReservas{
 	public Reservas(Reservas reservas) {
 		setReservas(reservas);
 	}
+	
+	public void comenzar() {
+		leer();
+	}
+	
+	private void leer() {
+		File ficheroReservas = new File(NOMBRE_FICHERO_RESERVAS);
+		try (ObjectInputStream entrada = new ObjectInputStream(new FileInputStream(ficheroReservas))) {
+			Reserva reserva = null;
+			do {
+				reserva = (Reserva) entrada.readObject();
+				insertar(reserva);
+			} while (reserva != null);
+		} catch (ClassNotFoundException e) {
+			System.out.println("No puedo encontrar la clase que tengo que leer.");
+		} catch (FileNotFoundException e) {
+			System.out.println("No puedo abrir el fihero de clientes.");
+		} catch (EOFException e) {
+			System.out.println("Fichero clientes leído satisfactoriamente.");
+		} catch (IOException e) {
+			System.out.println("Error inesperado de Entrada/Salida.");
+		} catch (OperationNotSupportedException e) {
+			System.out.println(e.getMessage());
+		}
+	}
+	
+	public void terminar() {
+		escribir();
+	}
+	
+	private void escribir() {
+		File ficheroReservas = new File(NOMBRE_FICHERO_RESERVAS);
+		try (ObjectOutputStream salida = new ObjectOutputStream(new FileOutputStream(ficheroReservas))){
+			for (Reserva reserva : coleccionReservas)
+				salida.writeObject(reserva);
+			System.out.println("Fichero clientes escrito satisfactoriamente.");
+		} catch (FileNotFoundException e) {
+			System.out.println("No puedo crear el fichero de clientes");
+		} catch (IOException e) {
+			System.out.println("Error inesperado de Entrada/Salida");
+		}
+	}
 
 	private void setReservas(Reservas reservas) {
 		if(reservas == null) {
@@ -197,39 +239,5 @@ public class Reservas implements IReservas{
 			}
 		}
 		return true;
-	}
-	
-	public void leer() {
-		File ficheroReservas = new File(NOMBRE_FICHERO_RESERVAS);
-		try (ObjectInputStream entrada = new ObjectInputStream(new FileInputStream(ficheroReservas))) {
-			Reserva reserva = null;
-			do {
-				reserva = (Reserva) entrada.readObject();
-				insertar(reserva);
-			} while (reserva != null);
-		} catch (ClassNotFoundException e) {
-			System.out.println("No puedo encontrar la clase que tengo que leer.");
-		} catch (FileNotFoundException e) {
-			System.out.println("No puedo abrir el fihero de clientes.");
-		} catch (EOFException e) {
-			System.out.println("Fichero clientes leído satisfactoriamente.");
-		} catch (IOException e) {
-			System.out.println("Error inesperado de Entrada/Salida.");
-		} catch (OperationNotSupportedException e) {
-			System.out.println(e.getMessage());
-		}
-	}
-	
-	public void escribir() {
-		File ficheroReservas = new File(NOMBRE_FICHERO_RESERVAS);
-		try (ObjectOutputStream salida = new ObjectOutputStream(new FileOutputStream(ficheroReservas))){
-			for (Reserva reserva : coleccionReservas)
-				salida.writeObject(reserva);
-			System.out.println("Fichero clientes escrito satisfactoriamente.");
-		} catch (FileNotFoundException e) {
-			System.out.println("No puedo crear el fichero de clientes");
-		} catch (IOException e) {
-			System.out.println("Error inesperado de Entrada/Salida");
-		}
 	}
 }

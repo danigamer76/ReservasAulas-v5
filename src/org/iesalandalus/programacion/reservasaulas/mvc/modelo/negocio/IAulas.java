@@ -7,6 +7,10 @@ import javax.naming.OperationNotSupportedException;
 import org.iesalandalus.programacion.reservasaulas.mvc.modelo.dominio.Aula;
 
 public interface IAulas {
+	
+	void comenzar();
+	
+	void terminar();
 
 	List<Aula> getAulas();
 	
@@ -19,8 +23,4 @@ public interface IAulas {
 	void borrar(Aula aula) throws OperationNotSupportedException;
 	
 	List<String> representar();
-	
-	void leer();
-	
-	void escribir();
 }

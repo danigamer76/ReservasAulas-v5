@@ -9,6 +9,13 @@ public enum FactoriaFuenteDatos {
 		public IFuenteDatos crear() {
 			return new FactoriaFuenteDatosMemoria();
 		}
+	},
+	FICHEROS{
+		@Override
+		public IFuenteDatos crear() {
+			return new FactoriaFuenteDatosMemoria();
+		}
+		
 	};
 	
 	public abstract IFuenteDatos crear();

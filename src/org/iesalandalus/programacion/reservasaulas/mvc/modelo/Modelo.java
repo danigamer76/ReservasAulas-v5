@@ -23,6 +23,18 @@ public class Modelo implements IModelo{
 		aulas = iFuenteDatos.crearAulas();
 		reservas = iFuenteDatos.crearReservas();
 	};
+	
+	public void comenzar() {
+		profesores.comenzar();
+		aulas.comenzar();
+		reservas.comenzar();
+	}
+	
+	public void terminar() {
+		profesores.terminar();
+		aulas.terminar();
+		reservas.terminar();
+	}
 
 	public List<Aula> getAulas() {
 		return aulas.getAulas();

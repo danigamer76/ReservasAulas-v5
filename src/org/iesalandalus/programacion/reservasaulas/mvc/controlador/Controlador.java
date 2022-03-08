@@ -23,11 +23,13 @@ public class Controlador implements IControlador{
 	}
 
 	public void comenzar() {
+		modelo.comenzar();
 		vista.comenzar();
 	}
 
 	public void terminar() {
-		vista.salir();
+		modelo.terminar();
+		System.out.println("Adios");
 		
 	}
 

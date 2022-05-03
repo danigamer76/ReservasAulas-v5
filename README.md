@@ -1,5 +1,4 @@
-# ReservasAulas-vmamalon
-# Tarea Reservas de Aulas
+# ReservasAulas-v4
 ## Profesor: AndrÃ©s Rubio del RÃ­o
 ## Alumno: Daniel Guardia Fernandez
 

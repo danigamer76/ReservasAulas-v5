@@ -1,39 +1,65 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.*?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.BorderPane?>
 
-<BorderPane fx:id="bp" style="-fx-background-color: #14242B;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ControladorPage2">
-   <left>
-      <VBox prefHeight="433.0" prefWidth="168.0" style="-fx-background-color: #0D1824;" BorderPane.alignment="CENTER">
-         <children>
-            <Button mnemonicParsing="false" prefHeight="42.0" prefWidth="174.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-width: 0px 2px 2px 0px;" text="PROFESOR" textFill="WHITE">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Button>
-            <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#page1" onMouseClicked="#page1" prefHeight="42.0" prefWidth="174.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-width: 0px 2px 2px 0px;" text="Page 01" textFill="WHITE">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Button>
-            <Button layoutX="10.0" layoutY="52.0" mnemonicParsing="false" onAction="#page2" prefHeight="42.0" prefWidth="174.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-width: 0px 2px 2px 0px;" text="Page 02" textFill="WHITE">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Button>
-            <Button layoutX="10.0" layoutY="94.0" mnemonicParsing="false" onAction="#page3" prefHeight="42.0" prefWidth="174.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-width: 0px 2px 2px 0px;" text="Page 03" textFill="WHITE">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Button>
-         </children>
-      </VBox>
-   </left>
+<BorderPane fx:id="bp" prefHeight="500.0" prefWidth="650.0" style="-fx-background-color: #14242B;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ControladorPage2">
    <center>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+      <AnchorPane prefHeight="500.0" prefWidth="555.0" style="-fx-background-color: #14242B;" BorderPane.alignment="CENTER">
+         <children>
+            <SplitPane dividerPositions="0.6203703703703703" prefHeight="500.0" prefWidth="650.0" style="-fx-background-color: #14242B;">
+              <items>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="498.0" prefWidth="400.0">
+                     <children>
+                        <TableView fx:id="tw_profesores" prefHeight="500.0" prefWidth="400.0">
+                          <columns>
+                            <TableColumn fx:id="tc_nombreprofesor" prefWidth="122.0" text="nombre" />
+                            <TableColumn fx:id="tc_correo" minWidth="0.0" prefWidth="157.0" text="correo" />
+                              <TableColumn fx:id="tc_telefono" minWidth="0.0" prefWidth="119.0" text="telefono" />
+                          </columns>
+                        </TableView>
+                     </children>
+                  </AnchorPane>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="498.0" prefWidth="248.0">
+                     <children>
+                        <Label layoutX="38.0" layoutY="36.0" text="Nombre del Profesor:" textFill="WHITE">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="tf_nombreprofesor" layoutX="36.0" layoutY="57.0" prefHeight="25.0" prefWidth="164.0" />
+                        <Button fx:id="btn_aniadir" layoutX="43.0" layoutY="293.0" mnemonicParsing="false" onAction="#aniadir" prefHeight="25.0" prefWidth="150.0" text="Añadir" />
+                        <Button fx:id="btn_eliminar" layoutX="43.0" layoutY="337.0" mnemonicParsing="false" onAction="#eliminar" prefHeight="25.0" prefWidth="150.0" text="Eliminar" />
+                        <Button fx:id="btn_nuevoi" layoutX="43.0" layoutY="385.0" mnemonicParsing="false" onAction="#nuevo" prefHeight="40.0" prefWidth="150.0" text="NUEVO !!!" />
+                        <Label fx:id="lb_avisos" alignment="CENTER" layoutX="43.0" layoutY="217.0" prefHeight="50.0" prefWidth="150.0" text="&quot;ERROR: Ya existe un aula con ese nombre.&quot;" textAlignment="CENTER" textFill="WHITE" visible="false" wrapText="true">
+                           <font>
+                              <Font size="10.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="38.0" layoutY="94.0" text="Correo:" textFill="WHITE">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="tf_correo" layoutX="36.0" layoutY="115.0" prefHeight="25.0" prefWidth="164.0" />
+                        <TextField fx:id="tf_telefono" layoutX="36.0" layoutY="171.0" prefHeight="25.0" prefWidth="164.0" />
+                        <Label layoutX="38.0" layoutY="150.0" text="Telefono:" textFill="WHITE">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </AnchorPane>
+              </items>
+            </SplitPane>
+         </children></AnchorPane>
    </center>
 </BorderPane>

@@ -157,7 +157,7 @@ public class ControladorPage1 implements Initializable{
     	//INICIALIZAMOS LA TABLA
     	this.inicializarTablaAulas();
     	
-    	//PONEMOS ESTOS DOS BOTONES PARA QUE NO SE PUEDAN SELECCIONAR
+    	//PONEMOS ESTE BOTON PARA QUE NO SE PUEDA SELECCIONAR
     	btn_eliminar.setDisable(true);
     	
     	//SELECCIONAR LAS CELDAS DE LA TABLA

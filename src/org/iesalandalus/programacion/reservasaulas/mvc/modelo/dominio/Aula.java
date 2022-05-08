@@ -10,11 +10,11 @@ public class Aula implements Serializable{
 	private static final int MAX_PUESTOS = 100;
 	
 	private String nombre;
-	private int puestos;
+	private String puestos;
 
-	public Aula(String nombre,int puestos) {
+	public Aula(String nombre,String cantidad) {
 		setNombre(nombre);
-		setPuestos(puestos);
+		setPuestos(cantidad);
 	}
 	
 	public Aula(Aula aula) {
@@ -38,15 +38,15 @@ public class Aula implements Serializable{
 		}
 	}
 	
-	public int getPuestos() {
+	public String getPuestos() {
 		return puestos;
 	}
 	
-	private void setPuestos(int puestos) {
-		if (puestos < MIN_PUESTOS) {
+	private void setPuestos(String puestos) {
+		if (Integer.parseInt(puestos) < MIN_PUESTOS) {
 			throw new IllegalArgumentException("ERROR: El número de puestos no es correcto.");
 		}else {
-			if (puestos > MAX_PUESTOS) {
+			if (Integer.parseInt(puestos)  > MAX_PUESTOS) {
 				throw new IllegalArgumentException("ERROR: El número de puestos no es correcto.");
 			}else {
 				this.puestos = puestos;
@@ -60,11 +60,11 @@ public class Aula implements Serializable{
 	}
 
 	public float getPuntos() {
-		return puestos*PUNTOS_POR_PUESTO;
+		return Integer.parseInt(puestos) *PUNTOS_POR_PUESTO;
 	}
 	
 	public static Aula getAulaFicticia(String nombreAula) {
-		return new Aula(nombreAula,50);
+		return new Aula(nombreAula,"50");
 	}
 	@Override
 	public int hashCode() {

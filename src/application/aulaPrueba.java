@@ -1,12 +1,9 @@
 package application;
 
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleStringProperty;
-
 public class aulaPrueba {
 	
 	public String nombreAula = new String();
-	public Integer cantidadAula = new Integer(0);
+	public String cantidadAula = new String();
 	
 	public String getNombreAula() {
 		return nombreAula;
@@ -14,10 +11,10 @@ public class aulaPrueba {
 	public void setNombreAula(String nombreAula) {
 		this.nombreAula = nombreAula;
 	}
-	public int getCantidadAula() {
+	public String getCantidadAula() {
 		return cantidadAula;
 	}
-	public void setCantidadAula(int cantidadAula) {
+	public void setCantidadAula(String cantidadAula) {
 		this.cantidadAula = cantidadAula;
 	}
 	

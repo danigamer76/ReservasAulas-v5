@@ -11,6 +11,7 @@ import javafx.scene.layout.BorderPane;
 
 public class ControladorMenu {
 
+	
     @FXML
     private BorderPane bp;
 
@@ -37,15 +38,13 @@ public class ControladorMenu {
     	loadPage("page3");
     }
     
-    private void loadPage(String page) {
+    private void loadPage(String page)  {
     	Parent root = null;
-    	
     	try {
 			root = FXMLLoader.load(getClass().getResource(page+".fxml"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-    	
     	bp.setCenter(root);
     	
     }

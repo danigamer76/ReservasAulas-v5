@@ -37,8 +37,7 @@
                            </font>
                         </Label>
                         <TextField fx:id="tf_nombreaula" layoutX="36.0" layoutY="57.0" prefHeight="25.0" prefWidth="164.0" />
-                        <Button fx:id="btn_aniadir" layoutX="43.0" layoutY="249.0" mnemonicParsing="false" onAction="#aniadir" prefHeight="25.0" prefWidth="149.0" text="Añadir" />
-                        <Button fx:id="btn_modificar" layoutX="43.0" layoutY="292.0" mnemonicParsing="false" onAction="#modificar" prefHeight="25.0" prefWidth="150.0" text="Modificar" />
+                        <Button fx:id="btn_aniadir" layoutX="43.0" layoutY="293.0" mnemonicParsing="false" onAction="#aniadir" prefHeight="25.0" prefWidth="150.0" text="Añadir" />
                         <Button fx:id="btn_eliminar" layoutX="43.0" layoutY="337.0" mnemonicParsing="false" onAction="#eliminar" prefHeight="25.0" prefWidth="150.0" text="Eliminar" />
                         <Button fx:id="btn_nuevoi" layoutX="43.0" layoutY="385.0" mnemonicParsing="false" onAction="#nuevo" prefHeight="40.0" prefWidth="150.0" text="NUEVO !!!" />
                         <Label fx:id="lb_cantidad" layoutX="118.0" layoutY="125.0" text="10" textFill="WHITE">
@@ -47,6 +46,11 @@
                            </font>
                         </Label>
                         <Slider fx:id="sld_cantidad" blockIncrement="1.0" layoutX="35.0" layoutY="162.0" majorTickUnit="15.0" min="10.0" prefHeight="14.0" prefWidth="165.0" showTickLabels="true" showTickMarks="true" value="10.0" />
+                        <Label fx:id="lb_avisos" alignment="CENTER" layoutX="43.0" layoutY="217.0" prefHeight="50.0" prefWidth="150.0" text="&quot;ERROR: Ya existe un aula con ese nombre.&quot;" textAlignment="CENTER" textFill="WHITE" visible="false" wrapText="true">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
                      </children>
                      <opaqueInsets>
                         <Insets />

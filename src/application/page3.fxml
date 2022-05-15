@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.BorderPane?>
+
+<BorderPane fx:id="bp" prefHeight="500.0" prefWidth="650.0" style="-fx-background-color: #14242B;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ControladorPage3">
+   <center>
+      <AnchorPane prefHeight="500.0" prefWidth="555.0" style="-fx-background-color: #14242B;" BorderPane.alignment="CENTER">
+         <children>
+            <SplitPane dividerPositions="0.6203703703703703" prefHeight="500.0" prefWidth="650.0" style="-fx-background-color: #14242B;">
+              <items>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="498.0" prefWidth="400.0">
+                     <children>
+                        <TableView fx:id="tw_reservas" prefHeight="500.0" prefWidth="400.0">
+                          <columns>
+                            <TableColumn fx:id="tc_aula" prefWidth="104.0" text="Aula" />
+                            <TableColumn fx:id="tc_profesor" minWidth="0.0" prefWidth="130.0" text="Profesor" />
+                              <TableColumn fx:id="tc_permanencia" minWidth="0.0" prefWidth="164.0" text="Permanencia" />
+                          </columns>
+                        </TableView>
+                     </children>
+                  </AnchorPane>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="498.0" prefWidth="248.0">
+                     <children>
+                        <Label layoutX="38.0" layoutY="36.0" text="Aula:" textFill="WHITE">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                        <Button fx:id="btn_aniadir" layoutX="43.0" layoutY="293.0" mnemonicParsing="false" onAction="#aniadir" prefHeight="25.0" prefWidth="150.0" text="Añadir" />
+                        <Button fx:id="btn_eliminar" layoutX="43.0" layoutY="337.0" mnemonicParsing="false" onAction="#eliminar" prefHeight="25.0" prefWidth="150.0" text="Eliminar" />
+                        <Button fx:id="btn_nuevoi" layoutX="43.0" layoutY="385.0" mnemonicParsing="false" onAction="#nuevo" prefHeight="40.0" prefWidth="150.0" text="NUEVO !!!" />
+                        <Label fx:id="lb_avisos" alignment="CENTER" layoutX="43.0" layoutY="217.0" prefHeight="50.0" prefWidth="150.0" text="&quot;ERROR: Ya existe un aula con ese nombre.&quot;" textAlignment="CENTER" textFill="WHITE" visible="false" wrapText="true">
+                           <font>
+                              <Font size="10.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="38.0" layoutY="94.0" text="Profesor:" textFill="WHITE">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="38.0" layoutY="151.0" text="Permanencia:" textFill="WHITE">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                        <ChoiceBox fx:id="cb_aulas" layoutX="38.0" layoutY="57.0" prefWidth="150.0" />
+                        <ChoiceBox fx:id="cb_profesores" layoutX="38.0" layoutY="115.0" prefWidth="150.0" />
+                        <DatePicker fx:id="date_picker" layoutX="38.0" layoutY="172.0" prefHeight="25.0" prefWidth="150.0" />
+                        <Label layoutX="38.0" layoutY="207.0" text="Hora:" textFill="WHITE">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                        <ChoiceBox fx:id="cb_hora" layoutX="83.0" layoutY="205.0" prefHeight="25.0" prefWidth="48.0" />
+                     </children>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </AnchorPane>
+              </items>
+            </SplitPane>
+         </children></AnchorPane>
+   </center>
+</BorderPane>

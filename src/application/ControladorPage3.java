@@ -13,6 +13,9 @@ import org.iesalandalus.programacion.reservasaulas.mvc.modelo.dominio.Permanenci
 import org.iesalandalus.programacion.reservasaulas.mvc.modelo.dominio.Profesor;
 import org.iesalandalus.programacion.reservasaulas.mvc.modelo.dominio.Reserva;
 
+import com.mongodb.BasicDBObject;
+import com.mongodb.DBCollection;
+
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
@@ -72,6 +75,8 @@ public class ControladorPage3 implements Initializable{
     ObservableList<Reserva> reservas;
 
 	private int posicionReservaEnTabla;
+	
+	DBCollection colReservas = Main.basedatosreserva.createCollection("reservas", null);
 
     @FXML
     void aniadir(ActionEvent event) throws OperationNotSupportedException {
@@ -83,6 +88,8 @@ public class ControladorPage3 implements Initializable{
     	reservas.add(reserva);
     	Main.coleccionReservas.insertar(reserva);
     	System.out.println(Main.coleccionReservas.representar());
+		BasicDBObject d1reserva = new BasicDBObject("Profesor",reserva.getProfesor().getNombre()).append("Aula", reserva.getAula().getNombre()).append("Permanencia", reserva.getPermanencia().getDia().toString());
+		colReservas.insert(d1reserva);
     }
 
     @FXML
@@ -94,7 +101,8 @@ public class ControladorPage3 implements Initializable{
     	reserva = new Reserva(profesor, aula, permanencia);
     	reservas.remove(posicionReservaEnTabla);
     	Main.coleccionReservas.borrar(reserva);
-
+		BasicDBObject d1reserva = new BasicDBObject("Profesor",reserva.getProfesor().getNombre()).append("Aula", reserva.getAula().getNombre()).append("Permanencia", reserva.getPermanencia().getDia().toString());
+		colReservas.remove(d1reserva);
     }
 
     @FXML

@@ -8,6 +8,9 @@ import javax.naming.OperationNotSupportedException;
 
 import org.iesalandalus.programacion.reservasaulas.mvc.modelo.dominio.Profesor;
 
+import com.mongodb.BasicDBObject;
+import com.mongodb.DBCollection;
+
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
@@ -63,6 +66,8 @@ public class ControladorPage2 implements Initializable{
 	ObservableList<Profesor> profesores;
 
 	private int posicionProfesorEnTabla;
+	
+	DBCollection colProfesores = Main.basedatosreserva.createCollection("profesores", null);
 
 	private static final String ER_TELEFONO = "[6,9]\\d{8}";
 	private static final String ER_CORREO = "\\w+(?:\\.\\w+)*@\\w+\\.\\w{2,5}";
@@ -99,7 +104,9 @@ public class ControladorPage2 implements Initializable{
 					}else {
 						profesores.add(profesor);
 						Main.coleccionProfesores.insertar(profesor);
-						System.out.println(Main.coleccionProfesores.representar());	  			
+						System.out.println(Main.coleccionProfesores.representar());	  	
+						BasicDBObject d1profesor = new BasicDBObject("Nombre_Profesor",profesor.getNombre()).append("Correo", profesor.getCorreo()).append("Telefono", profesor.getTelefono());
+						colProfesores.insert(d1profesor);
 					}
 				}
 			}
@@ -120,6 +127,8 @@ void eliminar(ActionEvent event) throws OperationNotSupportedException {
 	}
 	Main.coleccionProfesores.borrar(profesor);
 	profesores.remove(posicionProfesorEnTabla);
+	BasicDBObject d1profesor = new BasicDBObject("Nombre_Profesor",profesor.getNombre()).append("Correo", profesor.getCorreo()).append("Telefono", profesor.getTelefono());
+	colProfesores.remove(d1profesor);
 }
 
 //FUNCION PARA EL BOTON NUEVO

@@ -8,6 +8,9 @@ import javax.naming.OperationNotSupportedException;
 
 import org.iesalandalus.programacion.reservasaulas.mvc.modelo.dominio.Aula;
 
+import com.mongodb.BasicDBObject;
+import com.mongodb.DBCollection;
+
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -66,13 +69,13 @@ public class ControladorPage1 implements Initializable{
     
     private int posicionAulaEnTabla;
     
-	
+    DBCollection colAulas = Main.basedatosreserva.createCollection("aulas", null);
     
     //FUNCION PARA EL BOTON AÑADIR
 	@FXML
     void aniadir(ActionEvent event) throws OperationNotSupportedException {
 		String nombreAula = tf_nombreaula.getText();
-		String cantidad = String.valueOf((int)sld_cantidad.getValue());
+		int cantidad = (int)sld_cantidad.getValue();
 		Aula aula = new Aula(nombreAula,cantidad);
 		if(Main.coleccionAulas.getAulas().contains(aula)) {
 			lb_avisos.setText("ERROR: Ya existe un aula con ese nombre.");
@@ -80,7 +83,10 @@ public class ControladorPage1 implements Initializable{
 		}else {
 			aulas.add(aula);
 			Main.coleccionAulas.insertar(aula);
-			System.out.println(Main.coleccionAulas.representar());	
+			System.out.println(Main.coleccionAulas.representar());
+			BasicDBObject d1aula = new BasicDBObject("Nombre_Aula",aula.getNombre()).append("Capacidad", aula.getPuestos());
+			colAulas.insert(d1aula);
+			System.out.println("AULA AÑADIDA CORRECTAMENTE");
 		}	
     }
     
@@ -88,10 +94,12 @@ public class ControladorPage1 implements Initializable{
     @FXML
     void eliminar(ActionEvent event) throws OperationNotSupportedException {
     	String nombreAula = tf_nombreaula.getText();
-		String cantidad = String.valueOf((int)sld_cantidad.getValue());
+    	int cantidad = (int)sld_cantidad.getValue();
 		Aula aula = new Aula(nombreAula,cantidad);
     	Main.coleccionAulas.borrar(aula);
     	aulas.remove(posicionAulaEnTabla);
+    	BasicDBObject d1aula = new BasicDBObject("Nombre_Aula",aula.getNombre()).append("Capacidad", aula.getPuestos());
+    	colAulas.remove(d1aula);
     }
 
     //FUNCION PARA EL BOTON NUEVO
@@ -132,7 +140,7 @@ public class ControladorPage1 implements Initializable{
     	if(aula != null) {
     		//PONGO LOS TEXTFIELD CON LOS DATOS CORRESPONDIENTES
     		tf_nombreaula.setText(aula.getNombre());
-    		sld_cantidad.setValue(Double.parseDouble(aula.getPuestos()));
+    		sld_cantidad.setValue(aula.getPuestos());
     		
     		//PONGO LOS BOTONES EN SU ESTADO CORRESPONDIENTE
     		btn_eliminar.setDisable(false);
@@ -144,7 +152,7 @@ public class ControladorPage1 implements Initializable{
     //METODO PARA INICIALIZAR LA TABLA
     private void inicializarTablaAulas() {
     	 tc_nombreaula.setCellValueFactory(aula -> new SimpleStringProperty(aula.getValue().getNombre()));
-         tc_capacidad.setCellValueFactory(aula -> new SimpleStringProperty(aula.getValue().getPuestos()));
+         tc_capacidad.setCellValueFactory(aula -> new SimpleStringProperty(String.valueOf(aula.getValue().getPuestos())));
     	
          aulas = FXCollections.observableArrayList();
          

@@ -43,7 +43,7 @@ public class Consola {
 	}
 	
 	public static Aula leerAula() {
-		return new Aula(leerNombreAula(),String.valueOf(leerNumeroPuestos()));
+		return new Aula(leerNombreAula(),leerNumeroPuestos());
 	}
 	
 	public static int leerNumeroPuestos() {
